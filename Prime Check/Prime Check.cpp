@@ -1,5 +1,5 @@
 //Welcome to the
-//Super Omega Prime Check Deluxe from Hell and Beyond
+//Super Omega Prime Check Deluxe of Doom from Hell and Beyond
 
 #include <iostream>
 #include <math.h>
