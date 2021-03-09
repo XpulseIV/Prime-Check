@@ -32,7 +32,7 @@ bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
     sieve.resize(untilNumber, 1);
 
     if  (not hardcodingdeluxe(checkNumber)) {
-        std::cout << checkNumber << "Is not a prime" << '\n';
+        std::cout << checkNumber << "is not a prime" << '\n';
         exit(EXIT_FAILURE);
     }
 
