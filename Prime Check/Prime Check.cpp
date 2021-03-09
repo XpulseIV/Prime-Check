@@ -1,9 +1,14 @@
+//Welcome to the
+//Super Omega Prime Check Deluxe from Hell and Beyond
+
 #include <iostream>
 #include <math.h>
 #include <string>
 #include <vector>
 #include <algorithm>
+
 #include "hardcoding.h"
+
 int x = 1;
 
 bool IsNotSimplePrime(int y) {
@@ -114,7 +119,6 @@ int main() {
     bool prime;
     bool debug = false;
     bool error1 = true;
-    bool once = false;
 
     std::string input;
 
