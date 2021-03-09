@@ -1,0 +1,1 @@
+bool hardcodingdeluxe(unsigned long long checknumber);
