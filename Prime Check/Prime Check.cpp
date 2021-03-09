@@ -8,13 +8,7 @@
 #include <algorithm>
 
 #include "hardcoding.h"
-
-int x = 1;
-
-bool IsNotSimplePrime(int y) {
-    x += 1;
-    return ((x % 2) == 0 || (x % 3) == 0 || (x % 5) == 0 || (x % 7) == 0 || (x % 11) == 0 || (x % 13) == 0 || (x % 17) == 0 || (x % 19) == 0 || (x % 23) == 0 || (x % 29) == 0 || (x % 31) == 0 || (x % 37 == 0));
-}
+#include "IsNotSimplePrime.h"
 
 bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
 
