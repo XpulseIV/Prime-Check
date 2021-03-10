@@ -1,6 +1,5 @@
 bool hardcodingdeluxe(unsigned long long checkNumber)
 {
-
     if (checkNumber % 2 == 0) { return false; }
     if (checkNumber % 3 == 0) { return false; }
     if (checkNumber % 5 == 0) { return false; }

@@ -1,6 +1,7 @@
 //Welcome to the
 //Super Omega Prime Check Deluxe of Doom from Hell and Beyond
 
+#include <thread>
 #include <iostream>
 #include <math.h>
 #include <string>
@@ -117,9 +118,9 @@ int main() {
     std::string input;
 
     std::cout << "Enter number: ";
-
     std::getline(std::cin, input);
 
+    ///\see getting numbers form input
     if (input.rfind("debug ", 0) == 0) {
         debug = true;
         input = input.substr(5);
@@ -127,16 +128,15 @@ int main() {
     else {
         for (int i = 0; i < input.length(); i++) {
             if (isdigit(input[i])) {
-                error1 = false;
+                error1 = false; 
             }
 
-            if (error1) {
+            if (error1) { /// error1 means that 
                 std::cout << "Error 1: Number not found";
                 exit(EXIT_FAILURE);
             }
         }
     }
-
     unsigned long long checkNumber = std::stoull(input);
 
     if (checkNumber > 2147483647)
