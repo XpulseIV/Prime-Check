@@ -33,7 +33,7 @@ bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
 
     std::replace_if(sieve.begin(), sieve.end(), IsNotSimplePrime, 0);
 
-    for (i = 41; i < untilNumber; i++) {
+    for (i = 46399; i < untilNumber; i++) {
 
         if (sieve[i]) {
             if (debug) {
@@ -54,9 +54,8 @@ bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
 
             for (j = i * i; j < untilNumber; j += i) {
                 sieve[j] = false;
-                if (debug) {
-                    std::cout << "Composite: " << j << '\n';
-                }
+
+                if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
             }
         }
     }
@@ -100,9 +99,7 @@ bool PrimeCheck(int checkNumber, bool debug)
             for (j = i * i; j < untilNumber; j += i) {
                 sieve[j] = false;
 
-                if (debug) {
-                    std::cout << "Composite: " << j << '\n';
-                }
+                if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
             }
         }
     }
@@ -120,8 +117,9 @@ int main() {
     std::cout << "Enter number: ";
     std::getline(std::cin, input);
 
-    ///\see getting numbers form input
-    if (input.rfind("debug ", 0) == 0) {
+    // Getting numbers from input and solving issues
+
+    if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of performance
         debug = true;
         input = input.substr(5);
     }
@@ -130,19 +128,20 @@ int main() {
             if (isdigit(input[i])) {
                 error1 = false; 
             }
-
-            if (error1) { /// error1 means that 
-                std::cout << "Error 1: Number not found";
-                exit(EXIT_FAILURE);
-            }
         }
+    }
+    
+    if (error1) { /// error1 means that you did not enter a valid number
+        std::cout << "Error 1: Number not found";
+        exit(EXIT_FAILURE);
     }
     unsigned long long checkNumber = std::stoull(input);
 
+    // Actually checking if the number is a prime
     if (checkNumber > 2147483647)
     {
         std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
-        prime = LongPrimeCheck(checkNumber, debug);
+        prime = LongPrimeCheck(checkNumber, debug); /// long prime check is faster, but requires a high number to function
     }
     else {
         prime = PrimeCheck(checkNumber, debug);
