@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="hardcoding.cpp" />
-    <ClCompile Include="Header.cpp" />
     <ClCompile Include="Prime Check.cpp" />
     <ClCompile Include="IsNotSimplePrime.cpp" />
   </ItemGroup>
