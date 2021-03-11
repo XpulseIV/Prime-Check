@@ -33,7 +33,7 @@ bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
 
     std::replace_if(sieve.begin(), sieve.end(), IsNotSimplePrime, 0);
 
-    for (i = 46399; i < untilNumber; i++) {
+    for (i = 46347; i < untilNumber; i++) {
 
         if (sieve[i]) {
             if (debug) {
