@@ -1,10 +1,10 @@
 #include "IsNotSimplePrime.h"
 
-long long x = 1;
+long long x = 46397;
 
 bool IsNotSimplePrime(int dumb)
 {
-	x += 1;
+	x += 2;
 
 	return (/// Just hardcoding, nothing to see here
 		(x % 2) == 0 ||

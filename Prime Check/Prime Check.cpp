@@ -3,7 +3,7 @@
 
 #include <thread>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -11,32 +11,28 @@
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
 
-bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
+bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
 	unsigned long long i = 0;
 	unsigned long long j = 0;
 
 	bool prime = false;
 
-	long long untilNumber = 1 + ceil(sqrt(checkNumber));
+	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	int length = 1 + std::to_string(untilNumber).length();
-
-	std::vector<bool> sieve;
+	std::vector<char> sieve;
 
 	sieve.resize(untilNumber, 1);
 
-	if (not hardcodingdeluxe(checkNumber)) {
-		std::cout << checkNumber << "is not a prime" << '\n';
-		exit(EXIT_FAILURE);
+	if (!hardcodingdeluxe(checkNumber)) {
+		return prime;
 	}
-
-	std::replace_if(sieve.begin(), sieve.end(), IsNotSimplePrime, 0);
+	
+	std::replace_if(sieve.begin() + 46399, sieve.end(), IsNotSimplePrime, 2);
 
 	for (i = 46337; i < untilNumber; i++) {
-		if (sieve[i]) {
-			if (debug) {
-				std::cout << "Prime: " << i << '\n';
-			}
+		if (sieve[i] == 1) {
+			if (debug) { std::cout << "Prime: " << i << '\n'; }
+
 			if (checkNumber % i == 0) {
 				if (checkNumber != i) {
 					prime = false;
@@ -51,8 +47,8 @@ bool LongPrimeCheck(unsigned long long checkNumber, bool debug) {
 			}
 
 			for (j = i * i; j < untilNumber; j += i) {
-				sieve[j] = false;
-
+				sieve[j] = 2;
+				
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
 		}
@@ -67,7 +63,7 @@ bool PrimeCheck(int checkNumber, bool debug)
 
 	bool prime = false;
 
-	int untilNumber = 1 + ceil(sqrt(checkNumber));
+	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
 	std::vector<bool> sieve;
 
@@ -107,7 +103,7 @@ int main() {
 	bool debug = false;
 	bool error1 = true;
 
-	std::string input;
+	std::string input; 
 
 	std::cout << "Enter number: ";
 	std::getline(std::cin, input);
@@ -116,12 +112,11 @@ int main() {
 		debug = true;
 		input = input.substr(5);
 	}
+
 	// Solving issues
-	else {
-		for (int i = 0; i < input.length(); i++) {
-			if (isdigit(input[i])) {
-				error1 = false;
-			}
+	for (int i = 0; i < input.length(); i++) {
+		if (isdigit(input[i])) {
+			error1 = false;
 		}
 	}
 	if (error1) { /// error1 means that you did not enter a valid number
@@ -130,7 +125,7 @@ int main() {
 	}
 
 	// Getting numbers from input
-	unsigned long long checkNumber = std::stoull(input);
+	const unsigned long long checkNumber = std::stoull(input);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
