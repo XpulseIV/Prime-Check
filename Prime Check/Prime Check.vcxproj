@@ -142,10 +142,12 @@
     <ClCompile Include="hardcoding.cpp" />
     <ClCompile Include="Prime Check.cpp" />
     <ClCompile Include="IsNotSimplePrime.cpp" />
+    <ClCompile Include="someTestThings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hardcoding.h" />
     <ClInclude Include="IsNotSimplePrime.h" />
+    <ClInclude Include="someTestThings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

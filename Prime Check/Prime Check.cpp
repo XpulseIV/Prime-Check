@@ -10,6 +10,7 @@
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
+#include "someTestThings.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
 	unsigned long long i = 0;
@@ -126,6 +127,8 @@ int main() {
 
 	// Getting numbers from input
 	const unsigned long long checkNumber = std::stoull(input);
+
+	factorialCheck(checkNumber);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
