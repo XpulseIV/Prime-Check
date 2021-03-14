@@ -109,7 +109,7 @@ int main() {
 	std::cout << "Enter number: ";
 	std::getline(std::cin, input);
 
-	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of performance
+	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of speed
 		debug = true;
 		input = input.substr(5);
 	}
