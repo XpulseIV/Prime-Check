@@ -124,7 +124,7 @@ int main() {
 		input = input.substr(5);
 	}
 
-	// Solving issues
+	// Removes any characters from string
 	input = remChars(input);
 
 	if (input.size() == 0) {
