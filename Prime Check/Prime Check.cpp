@@ -5,14 +5,13 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <vector>
 #include <algorithm>
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
 #include "someTestThings.h"
 
-bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
+bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
 	long long j = 0;
 
@@ -31,7 +30,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
 	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
 
 	for (i = 46337; i < untilNumber; i++) {
-		if (sieve[i] == 1) {
+		if (sieve[i]) {
 			if (debug) { std::cout << "Prime: " << i << '\n'; }
 
 			if (checkNumber % i == 0) {
@@ -48,7 +47,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
 			}
 
 			for (j = i * i; j < untilNumber; j += i) {
-				sieve[j] = 2;
+				sieve[j] = false;
 				
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
@@ -57,7 +56,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
 	return prime;
 }
 
-bool PrimeCheck(int checkNumber, bool debug)
+bool PrimeCheck(const int checkNumber, const bool debug)
 {
 	int i = 0;
 	int j = 0;
@@ -66,30 +65,38 @@ bool PrimeCheck(int checkNumber, bool debug)
 
 	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	std::vector<bool> sieve;
+	bool* sieve = new bool [untilNumber];
 
-	sieve.resize(untilNumber, 1);
+	std::fill_n(sieve, untilNumber, true);
 
-	for (i = 2; i < untilNumber; i++) {
-		if (sieve[i]) {
-			if (debug) {
+	for (i = 2; i < untilNumber; i++)
+	{
+		if (sieve[i])
+		{
+			if (debug)
+			{
 				std::cout << "Prime: " << i << '\n';
 			}
 
-			if (checkNumber % i == 0) {
-				if (checkNumber != i) {
+			if (checkNumber % i == 0)
+			{
+				if (checkNumber != i)
+				{
 					prime = false;
 					break;
 				}
-				else {
+				else
+				{
 					prime = true;
 				}
 			}
-			else {
+			else
+			{
 				prime = true;
 			}
 
-			for (j = i * i; j < untilNumber; j += i) {
+			for (j = i * i; j < untilNumber; j += i)
+			{
 				sieve[j] = false;
 
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
@@ -106,7 +113,10 @@ int main() {
 
 	std::string input; 
 
+	// Outputting things for visuals
+	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
 	std::cout << "Enter number: ";
+	
 	std::getline(std::cin, input);
 
 	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of speed
