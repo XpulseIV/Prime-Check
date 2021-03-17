@@ -111,7 +111,7 @@ int main() {
 	bool prime;
 	bool debug = false;
 
-	std::string input; 
+	std::string input;
 
 	// Outputting things for visuals
 	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
@@ -125,7 +125,12 @@ int main() {
 	}
 
 	// Removes any characters from string
-	input = remChars(input);
+	for (auto i : input) {
+		if (!isdigit(i)) {
+			remChars(input);
+			break;
+		}
+	}
 
 	if (input.size() == 0) {
 		std::cout << "No numbers found";
