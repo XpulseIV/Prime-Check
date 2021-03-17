@@ -27,6 +27,9 @@
     <ClCompile Include="someTestThings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="delChars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hardcoding.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="someTestThings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="delChars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,7 @@
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
 #include "someTestThings.h"
+#include "delChars.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
@@ -109,7 +110,6 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 int main() {
 	bool prime;
 	bool debug = false;
-	bool noNumber = true;
 
 	std::string input; 
 
@@ -125,14 +125,10 @@ int main() {
 	}
 
 	// Solving issues
-	for (auto i : input) {
-		if (isdigit(i)) {
-			noNumber = false;
-		}
-	}
-	if (noNumber) { /// error1 means that you did not enter a valid number
-		std::cout << "Error 1: Number not found";
-		exit(EXIT_FAILURE);
+	input = remChars(input);
+
+	if (input.size() == 0) {
+		std::cout << "No numbers found";
 	}
 
 	// Getting numbers from input

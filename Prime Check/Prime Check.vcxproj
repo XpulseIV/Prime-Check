@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="delChars.cpp" />
     <ClCompile Include="hardcoding.cpp" />
     <ClCompile Include="Prime Check.cpp" />
     <ClCompile Include="IsNotSimplePrime.cpp" />
@@ -146,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hardcoding.h" />
+    <ClInclude Include="delChars.h" />
     <ClInclude Include="IsNotSimplePrime.h" />
     <ClInclude Include="someTestThings.h" />
   </ItemGroup>
