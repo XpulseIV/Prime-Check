@@ -1,1 +1,1 @@
-unsigned long long factorialCheck(unsigned long long n);
+unsigned long long test(unsigned long long n);
