@@ -1,4 +1,4 @@
-unsigned long long test(unsigned long long n)
+unsigned long long Test(unsigned long long n)
 {
-
+	return 0;
 }

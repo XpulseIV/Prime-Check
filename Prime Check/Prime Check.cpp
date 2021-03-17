@@ -138,7 +138,7 @@ int main() {
 	// Getting numbers from input
 	const unsigned long long checkNumber = std::stoull(input);
 
-	test(checkNumber);
+	Test(checkNumber);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
