@@ -13,22 +13,22 @@
 #include "someTestThings.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, bool debug) {
-	unsigned long long i = 0;
-	unsigned long long j = 0;
+	long long i = 0;
+	long long j = 0;
 
 	bool prime = false;
 
 	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	std::vector<char> sieve;
+	bool* sieve = new bool[untilNumber];
 
-	sieve.resize(untilNumber, 1);
+	std::fill_n(sieve, untilNumber, 1);
 
 	if (!hardcodingdeluxe(checkNumber)) {
 		return prime;
 	}
 	
-	std::replace_if(sieve.begin() + 46399, sieve.end(), IsNotSimplePrime, 2);
+	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
 
 	for (i = 46337; i < untilNumber; i++) {
 		if (sieve[i] == 1) {
@@ -102,7 +102,7 @@ bool PrimeCheck(int checkNumber, bool debug)
 int main() {
 	bool prime;
 	bool debug = false;
-	bool error1 = true;
+	bool noNumber = true;
 
 	std::string input; 
 
@@ -115,12 +115,12 @@ int main() {
 	}
 
 	// Solving issues
-	for (int i = 0; i < input.length(); i++) {
-		if (isdigit(input[i])) {
-			error1 = false;
+	for (auto i : input) {
+		if (isdigit(i)) {
+			noNumber = false;
 		}
 	}
-	if (error1) { /// error1 means that you did not enter a valid number
+	if (noNumber) { /// error1 means that you did not enter a valid number
 		std::cout << "Error 1: Number not found";
 		exit(EXIT_FAILURE);
 	}
