@@ -129,6 +129,7 @@ int main() {
 
 	if (input.size() == 0) {
 		std::cout << "No numbers found";
+		exit(EXIT_FAILURE);
 	}
 
 	// Getting numbers from input
