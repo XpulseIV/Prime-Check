@@ -127,7 +127,7 @@ int main() {
 	// Removes any characters from string
 	for (auto i : input) {
 		if (!isdigit(i)) {
-			remChars(input);
+			input = remChars(input);
 			break;
 		}
 	}
