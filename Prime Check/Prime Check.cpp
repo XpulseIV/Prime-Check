@@ -10,8 +10,7 @@
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
 #include "someTestThings.h"
-#include "delChars.h"
-
+#include "DeleteChars.h"
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
 	long long j = 0;
@@ -24,10 +23,9 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 	std::fill_n(sieve, untilNumber, 1);
 
-	if (!hardcodingdeluxe(checkNumber)) {
-		return prime;
-	}
-	
+	if (!hardcodingdeluxe(checkNumber)) {return prime;} /// Dont do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
+
+	// The line below is what makes LongPrimeCheck faster
 	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
 
 	for (i = 46337; i < untilNumber; i++) {
@@ -119,15 +117,10 @@ int main() {
 	
 	std::getline(std::cin, input);
 
- 	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of speed
-		debug = true;
-		input = input.substr(5);
-	}
+ 	if (input.rfind("debug ", 0) == 0) {debug = true;} // Debug allows you to see what is going, at the cost of speed
 
 	// Removes any characters from string
-
 	input = RemoveChars(input);
-
 	if (input.empty()) {
 		std::cout << "No numbers found";
 		exit(EXIT_FAILURE);
@@ -142,7 +135,7 @@ int main() {
 	if (checkNumber > 2147483647)
 	{
 		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
-		prime = LongPrimeCheck(checkNumber, debug); /// long prime check is faster, but requires a high number to function
+		prime = LongPrimeCheck(checkNumber, debug); /// LongPrimeCheck is faster, but requires a high number to function
 	}
 	else {
 		prime = PrimeCheck(checkNumber, debug);

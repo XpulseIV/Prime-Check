@@ -27,7 +27,7 @@
     <ClCompile Include="someTestThings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="delChars.cpp">
+    <ClCompile Include="DeleteChars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="someTestThings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="delChars.h">
+    <ClInclude Include="DeleteChars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
