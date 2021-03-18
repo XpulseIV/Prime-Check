@@ -119,20 +119,16 @@ int main() {
 	
 	std::getline(std::cin, input);
 
-	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of speed
+ 	if (input.rfind("debug ", 0) == 0) { // Debug allows you to see what is going, at the cost of speed
 		debug = true;
 		input = input.substr(5);
 	}
 
 	// Removes any characters from string
-	for (auto i : input) {
-		if (!isdigit(i)) {
-			input = remChars(input);
-			break;
-		}
-	}
 
-	if (input.size() == 0) {
+	input = RemoveChars(input);
+
+	if (input.empty()) {
 		std::cout << "No numbers found";
 		exit(EXIT_FAILURE);
 	}

@@ -1,14 +1,13 @@
 #include <iostream>
-#include <vector>
+#include <algorithm>
 
-std::string s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-std::vector<char> v(s.begin(), s.end());
-
-std::string remChars(std::string checkString) {
-	for (int i = 0; i <= s.size(); i++) {
-		checkString.erase(remove(checkString.begin(), checkString.end(), s[i]), checkString.end());
-
+std::string RemoveChars(std::string checkString) {
+	for (int i = 0; i < checkString.size(); i++) {
+		if (!isdigit(checkString[i]))
+		{
+			checkString.erase(checkString.begin() + i);
+			i--;
+		}
 	}
 	return checkString;
 }

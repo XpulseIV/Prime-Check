@@ -1,3 +1,2 @@
-#include <iostream>
 
-std::string remChars(std::string number);
+std::string RemoveChars(std::string number);
