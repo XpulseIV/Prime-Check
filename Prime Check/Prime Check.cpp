@@ -129,16 +129,14 @@ int main() {
 	// Getting numbers from input
 	const auto check_number = std::stoull(input);
 
-	test(check_number);
-
 	// Actually checking if the number is a prime
-	if (check_number > 2147483647)
+	if (check_number <= 2147483647)
 	{
-		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
-		prime = long_prime_check(check_number, debug); /// LongPrimeCheck is faster, but requires a high number to function
+		prime_check(check_number, debug);
 	}
 	else {
-		prime = prime_check(check_number, debug);
+		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
+		prime = long_prime_check(check_number, debug); /// LongPrimeCheck is faster, but requires a high number to function
 	}
 
 	if (prime) {
