@@ -129,7 +129,7 @@ int main() {
 	// Getting numbers from input
 	const auto check_number = std::stoull(input);
 
-	Test(check_number);
+	test(check_number);
 
 	// Actually checking if the number is a prime
 	if (check_number > 2147483647)
