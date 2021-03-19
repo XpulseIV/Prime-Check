@@ -21,7 +21,7 @@
     <ClCompile Include="hardcoding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="is_not_simple_prime.cpp">
+    <ClCompile Include="IsNotSimplePrime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="someTestThings.cpp">
@@ -35,7 +35,7 @@
     <ClInclude Include="hardcoding.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="is_not_simple_prime.h">
+    <ClInclude Include="IsNotSimplePrime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="someTestThings.h">

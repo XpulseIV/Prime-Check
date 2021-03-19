@@ -1,1 +1,1 @@
-std::string remove_chars(std::string number);
+std::string RemoveChars(std::string number);
