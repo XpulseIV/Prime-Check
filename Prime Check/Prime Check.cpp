@@ -120,6 +120,7 @@ int main() {
  	if (input.rfind("debug ", 0) == 0) {debug = true;} // Debug allows you to see what is going, at the cost of speed
 
 	// Removes any characters from string
+	// Removes any characters from string
 	input = RemoveChars(input);
 	if (input.empty()) {
 		std::cout << "No numbers found";
