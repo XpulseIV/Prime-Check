@@ -1,6 +1,6 @@
 #include <iostream>
 
-std::string RemoveChars(std::string checkString) {
+std::string remove_chars(std::string checkString) {
 	for (int i = 0; i < checkString.size(); i++) {
 		if (!isdigit(checkString[i]))
 		{
