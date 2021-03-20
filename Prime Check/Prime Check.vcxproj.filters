@@ -24,9 +24,6 @@
     <ClCompile Include="is_not_simple_prime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="someTestThings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DeleteChars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,9 +33,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="is_not_simple_prime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="someTestThings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DeleteChars.h">

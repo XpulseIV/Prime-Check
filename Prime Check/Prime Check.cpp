@@ -9,7 +9,6 @@
 
 #include "hardcoding.h"
 #include "is_not_simple_prime.h"
-#include "someTestThings.h"
 #include "DeleteChars.h"
 bool long_prime_check(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
@@ -106,7 +105,7 @@ bool prime_check(const int check_number, const bool debug)
 }
 
 int main() {
-	bool prime;
+	bool prime = false;
 	auto debug = false;
 
 	std::string input;

@@ -1,12 +1,10 @@
-#include "is_not_simple_prime.h"
-
 long long x = 46397;
 
 bool is_not_simple_prime(int dumb)
 {
 	x += 2;
 
-	return (/// Just hardcoding, nothing to see here
+	return (/// Just hard coding, nothing to see here
 		(x % 2) == 0 ||
 		(x % 3) == 0 ||
 		(x % 5) == 0 ||
