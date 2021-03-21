@@ -1,1 +1,1 @@
-bool hardcoded_values(unsigned long long checknumber);
+bool HardcodedValues(unsigned long long checkNumber);

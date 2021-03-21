@@ -1,0 +1,1 @@
+bool IsNotSimplePrime(int dumb);
