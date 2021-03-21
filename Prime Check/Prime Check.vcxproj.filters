@@ -27,9 +27,6 @@
     <ClCompile Include="DeleteChars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="someTestThings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hardcoding.h">
@@ -40,12 +37,6 @@
     </ClInclude>
     <ClInclude Include="DeleteChars.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="someTestThings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="someTestThings.h">
-      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
