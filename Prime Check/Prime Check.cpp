@@ -9,7 +9,6 @@
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
-#include "someTestThings.h"
 #include "DeleteChars.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
