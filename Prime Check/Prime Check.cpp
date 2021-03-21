@@ -13,7 +13,7 @@
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	auto i = 0;
-	auto long j = 0;
+	auto j = 0;
 
 	auto prime = false;
 
