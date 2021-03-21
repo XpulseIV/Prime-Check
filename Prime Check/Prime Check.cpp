@@ -24,7 +24,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 	std::fill_n(sieve, untilNumber, 1);
 
-	if (!HardcodedValues(checkNumber)) { return prime; } /// Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
+	if (!HardcodedValues(checkNumber)) { return prime; } /// Do not run replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// The line below is what makes LongPrimeCheck faster
 	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
