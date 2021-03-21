@@ -12,8 +12,8 @@
 #include "DeleteChars.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
-	long long i = 0;
-	long long j = 0;
+	auto i = 0;
+	auto long j = 0;
 
 	auto prime = false;
 
@@ -151,6 +151,6 @@ int main() {
 		std::cout << std::endl << checkNumber << " is not a prime";
 	}
 	
-	std::cout << '\n' << "===========================================================<" << '\n';
+	std::cout << '\n' << ">===========================================================<" << '\n';
 	return 0;
 }
