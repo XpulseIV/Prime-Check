@@ -55,10 +55,10 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	return prime;
 }
 
-bool PrimeCheck(const long checkNumber, const bool debug)
+bool PrimeCheck(const unsigned long long checkNumber, const bool debug)
 {
-	auto i = 0;
-	auto j = 0;
+	unsigned long long i = 0;
+	unsigned long long j = 0;
 
 	auto prime = false;
 
@@ -107,12 +107,12 @@ bool PrimeCheck(const long checkNumber, const bool debug)
 
 int main() {
 	bool prime = false;
-	auto debug = false;
+	bool debug = false;
 
 	std::string input;
 
 	// Outputting things for visuals
-	std::cout << '\n' <<"===========================================================" << '\n';
+	std::cout << '\n' <<">===========================================================<" << '\n';
 	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
 	std::cout << "Enter number: ";
 
@@ -126,12 +126,12 @@ int main() {
 	if (input.empty()) {
 		/// Close the program if there are no numbers
 		std::cout << "Error: no numbers found";
-		std::cout << '\n' << "===========================================================" << '\n';
+		std::cout << '\n' << ">===========================================================<" << '\n';
 		return 1;
 	}
 
 	// Getting numbers from input
-	const auto checkNumber = std::stoull(input);
+	const unsigned long long checkNumber = std::stoull(input);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
@@ -151,6 +151,6 @@ int main() {
 		std::cout << std::endl << checkNumber << " is not a prime";
 	}
 	
-	std::cout << '\n' << "===========================================================" << '\n';
+	std::cout << '\n' << "===========================================================<" << '\n';
 	return 0;
 }
