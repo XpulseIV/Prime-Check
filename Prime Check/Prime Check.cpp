@@ -107,7 +107,7 @@ bool PrimeCheck(const long checkNumber, const bool debug)
 }
 
 int main() {
-	bool prime;
+	bool prime = false;
 	auto debug = false;
 
 	std::string input;
