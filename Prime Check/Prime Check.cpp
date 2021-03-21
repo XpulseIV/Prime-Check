@@ -9,21 +9,21 @@
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
-#include "someTestThings.h"
 #include "DeleteChars.h"
+
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
 	long long j = 0;
 
-	bool prime = false;
+	auto prime = false;
 
 	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	bool* sieve = new bool[untilNumber];
+	auto* sieve = new bool[untilNumber];
 
 	std::fill_n(sieve, untilNumber, 1);
 
-	if (!hardcodingdeluxe(checkNumber)) {return prime;} /// Dont do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
+	if (!HardcodedValues(checkNumber)) { return prime; } /// Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// The line below is what makes LongPrimeCheck faster
 	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
@@ -47,7 +47,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 			for (j = i * i; j < untilNumber; j += i) {
 				sieve[j] = false;
-				
+
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
 		}
@@ -57,14 +57,14 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 bool PrimeCheck(const int checkNumber, const bool debug)
 {
-	int i = 0;
-	int j = 0;
+	auto i = 0;
+	auto j = 0;
 
-	bool prime = false;
+	auto prime = false;
 
 	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	bool* sieve = new bool [untilNumber];
+	auto* sieve = new bool[untilNumber];
 
 	std::fill_n(sieve, untilNumber, true);
 
@@ -106,31 +106,33 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 }
 
 int main() {
-	bool prime;
-	bool debug = false;
+	auto prime = false;
+	auto debug = false;
 
 	std::string input;
 
 	// Outputting things for visuals
+	std::cout << '\n' <<">===========================================================<" << '\n';
 	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
 	std::cout << "Enter number: ";
-	
+
 	std::getline(std::cin, input);
 
- 	if (input.rfind("debug ", 0) == 0) {debug = true;} // Debug allows you to see what is going, at the cost of speed
+	if (input.rfind("debug ", 0) == 0) { debug = true; } // Debug allows you to see what is going, at the cost of speed
 
 	// Removes any characters from string
 	// Removes any characters from string
 	input = RemoveChars(input);
+	
 	if (input.empty()) {
-		std::cout << "No numbers found";
-		exit(EXIT_FAILURE);
+		/// Close the program if there are no numbers
+		std::cout << "Error: no numbers found";
+		std::cout << '\n' << ">===========================================================<" << '\n';
+		return 1;
 	}
 
 	// Getting numbers from input
 	const unsigned long long checkNumber = std::stoull(input);
-
-	Test(checkNumber);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
@@ -138,7 +140,8 @@ int main() {
 		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
 		prime = LongPrimeCheck(checkNumber, debug); /// LongPrimeCheck is faster, but requires a high number to function
 	}
-	else {
+	else
+	{
 		prime = PrimeCheck(checkNumber, debug);
 	}
 
@@ -148,6 +151,7 @@ int main() {
 	else {
 		std::cout << std::endl << checkNumber << " is not a prime";
 	}
-
+	
+	std::cout << '\n' << "===========================================================<" << '\n';
 	return 0;
 }

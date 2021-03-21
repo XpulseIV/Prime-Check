@@ -1,1 +1,2 @@
-bool hardcodingdeluxe(unsigned long long checknumber);
+#pragma once
+bool HardcodedValues(unsigned long long checkNumber);
