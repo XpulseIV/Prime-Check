@@ -55,10 +55,10 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	return prime;
 }
 
-bool PrimeCheck(const unsigned long long checkNumber, const bool debug)
+bool PrimeCheck(const int checkNumber, const bool debug)
 {
-	unsigned long long i = 0;
-	unsigned long long j = 0;
+	auto i = 0;
+	auto j = 0;
 
 	auto prime = false;
 
@@ -106,8 +106,8 @@ bool PrimeCheck(const unsigned long long checkNumber, const bool debug)
 }
 
 int main() {
-	bool prime = false;
-	bool debug = false;
+	auto prime = false;
+	auto debug = false;
 
 	std::string input;
 
