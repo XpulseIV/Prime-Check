@@ -12,8 +12,8 @@
 #include "DeleteChars.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
-	auto i = 0;
-	auto j = 0;
+	long long i = 0;
+	long long j = 0;
 
 	auto prime = false;
 
@@ -57,8 +57,8 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 bool PrimeCheck(const int checkNumber, const bool debug)
 {
-	auto i = 0;
-	auto j = 0;
+	int i = 0;
+	int j = 0;
 
 	auto prime = false;
 
@@ -106,8 +106,8 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 }
 
 int main() {
-	auto prime = false;
-	auto debug = false;
+	bool prime = false;
+	bool debug = false;
 
 	std::string input;
 
@@ -154,3 +154,4 @@ int main() {
 	std::cout << '\n' << ">===========================================================<" << '\n';
 	return 0;
 }
+
