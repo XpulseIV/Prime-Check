@@ -57,8 +57,8 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 bool PrimeCheck(const unsigned long long checkNumber, const bool debug)
 {
-	unsigned long long i = 0;
-	unsigned long long j = 0;
+	auto i = 0;
+	auto j = 0;
 
 	auto prime = false;
 
@@ -106,14 +106,14 @@ bool PrimeCheck(const unsigned long long checkNumber, const bool debug)
 }
 
 int main() {
-	bool prime = false;
+	bool prime;
 	bool debug = false;
 
 	std::string input;
 
 	// Outputting things for visuals
-	std::cout << '\n' <<">===========================================================<" << '\n';
-	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
+	std::cout << "\n===========================================================\n";
+	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond\n";
 	std::cout << "Enter number: ";
 
 	std::getline(std::cin, input);
@@ -126,7 +126,7 @@ int main() {
 	if (input.empty()) {
 		/// Close the program if there are no numbers
 		std::cout << "Error: no numbers found";
-		std::cout << '\n' << ">===========================================================<" << '\n';
+		std::cout << "\n===========================================================\n";
 		return 1;
 	}
 
@@ -136,7 +136,7 @@ int main() {
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
 	{
-		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
+		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size\n";
 		prime = LongPrimeCheck(checkNumber, debug); /// LongPrimeCheck is faster, but requires a high number to function
 	}
 	else
@@ -145,12 +145,12 @@ int main() {
 	}
 
 	if (prime) {
-		std::cout << std::endl << checkNumber << " is a prime";
+		std::cout << '\n' << checkNumber << " is a prime";
 	}
 	else {
-		std::cout << std::endl << checkNumber << " is not a prime";
+		std::cout << '\n' << checkNumber << " is not a prime";
 	}
 	
-	std::cout << '\n' << "===========================================================<" << '\n';
+	std::cout << "\n===========================================================\n";
 	return 0;
 }
