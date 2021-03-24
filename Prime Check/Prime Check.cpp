@@ -11,6 +11,46 @@
 #include "IsNotSimplePrime.h"
 #include "DeleteChars.h"
 
+std::string lowerCaseToUpperCase(std::string checkString)
+{
+	for (int charc = 1; charc <= checkString.length(); charc++)
+	{
+
+		if (!isdigit(checkString[charc]))
+		{
+			if (std::islower(checkString[charc]))
+			{
+				checkString[charc] = std::toupper(checkString[charc]);
+			}
+
+			else
+			{
+				continue;
+			}
+		}
+	}
+	return checkString;
+}
+
+int to_decimal(std::string number, const int base /*= 16*/)
+{
+	auto ans = 0;
+	const int size = number.length();
+
+	for (auto i = 0; i < size; i++)
+	{
+		if (number[i] >= 'A')
+		{
+			ans += (number[i] - 'A' + 10) * pow(base, size - i - 1);
+		}
+		else
+		{
+			ans += (number[i] - '0') * pow(base, size - i - 1);
+		}
+	}
+	return ans;
+}
+
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
 	long long j = 0;
@@ -108,8 +148,10 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 int main() {
 	bool prime;
 	bool debug = false;
+	unsigned long long checkNumber;
 
 	std::string input;
+	std::string base;
 
 	// Outputting things for visuals
 	std::cout << "\n===========================================================\n";
@@ -118,20 +160,50 @@ int main() {
 
 	std::getline(std::cin, input);
 
+	std::cout << "Enter the base of that number: ";
+	
+	std::getline(std::cin, base);
+	int baseInt;
+
+	if (base == "") {
+		baseInt = 10;
+	}
+	else
+	{
+		baseInt = std::stoi(base);
+	}
+	
 	if (input.rfind("debug ", 0) == 0) { debug = true; } // Debug allows you to see what is going, at the cost of speed
 
 	// Removes any characters from string
-	input = RemoveChars(input);
-	
-	if (input.empty()) {
-		/// Close the program if there are no numbers
-		std::cout << "Error: no numbers found";
-		std::cout << "\n===========================================================\n";
-		return 1;
+	if (baseInt == 10) {
+		input = RemoveChars(input);
+
+		if (input.empty()) {
+			/// Close the program if there are no numbers
+			std::cout << "Error: no numbers found";
+			std::cout << "\n===========================================================\n";
+			return 1;
+		}
+	}
+	for (int charc2 = 1; charc2 <= input.length(); charc2++)
+	{
+		if (!isdigit(input[charc2]))
+		{
+			lowerCaseToUpperCase(input);
+			break;
+		}
 	}
 
-	// Getting numbers from input
-	const unsigned long long checkNumber = std::stoull(input);
+	if ((!baseInt == 10) == 0) {
+		checkNumber = to_decimal(input, baseInt);
+		
+	}
+	else
+	{
+		// Getting numbers from input
+		checkNumber = std::stoull(input);
+	}
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
