@@ -11,27 +11,6 @@
 #include "IsNotSimplePrime.h"
 #include "DeleteChars.h"
 
-std::string lowerCaseToUpperCase(std::string checkString)
-{
-	for (int charc = 1; charc <= checkString.length(); charc++)
-	{
-
-		if (!isdigit(checkString[charc]))
-		{
-			if (std::islower(checkString[charc]))
-			{
-				checkString[charc] = std::toupper(checkString[charc]);
-			}
-
-			else
-			{
-				continue;
-			}
-		}
-	}
-	return checkString;
-}
-
 int to_decimal(std::string number, const int base /*= 16*/)
 {
 	auto ans = 0;
@@ -186,13 +165,19 @@ int main() {
 			return 1;
 		}
 	}
-	for (int charc2 = 1; charc2 <= input.length(); charc2++)
+	for (int charc = 1; charc <= input.length(); charc++)
 	{
-		if (!isdigit(input[charc2]))
+		if (!isdigit(input[charc]))
 		{
-			lowerCaseToUpperCase(input);
-			break;
-		}
+			if (std::islower(input[charc]))
+			{
+				input[charc] = std::toupper(input[charc]);
+			}
+
+			else
+			{
+				continue;
+			}
 	}
 
 	if ((!baseInt == 10) == 0) {
