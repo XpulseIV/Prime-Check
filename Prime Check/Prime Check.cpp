@@ -165,6 +165,7 @@ int main() {
 			return 1;
 		}
 	}
+	
 	for (int charc = 1; charc <= input.length(); charc++)
 	{
 		if (!isdigit(input[charc]))
@@ -178,12 +179,13 @@ int main() {
 			{
 				continue;
 			}
+		}
 	}
 
+	char* numberInCharArray = &input[0];
+
 	if ((!baseInt == 10) == 0) {
-		checkNumber = to_decimal(input, baseInt);
-		strtoull()
-		
+		checkNumber = strtoull(numberInCharArray ,NULL, baseInt);
 	}
 	else
 	{
