@@ -52,13 +52,26 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 			}
 		}
 	}
+	if (debug)
+	{
+		std::cout << "Primes are: " << std::endl;
+
+		for (unsigned long long sieveIndex = 1; sieveIndex <= i; sieveIndex++)
+		{
+			if (sieve[sieveIndex])
+			{
+				std::cout << sieveIndex << std::endl;
+			}
+		}
+	}
+
 	return prime;
 }
 
 bool PrimeCheck(const int checkNumber, const bool debug)
 {
-	auto i = 0;
-	auto j = 0;
+	int i = 0;
+	int j = 0;
 
 	auto prime = false;
 
@@ -102,42 +115,70 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 			}
 		}
 	}
+
+	if (debug)
+	{
+		std::cout << "Primes are: " << std::endl;
+
+		for (unsigned long long sieveIndex = 1; sieveIndex <= i; sieveIndex++)
+		{
+			if (sieve[sieveIndex])
+			{
+				std::cout << sieveIndex << std::endl;
+			}
+		}
+	}
+
 	return prime;
 }
 
 int main() {
-	auto prime = false;
-	auto debug = false;
+	bool prime;
+	bool debug = false;
+	bool hex = false;
+	bool noNumber = false;
+	unsigned long long checkNumber;
 
 	std::string input;
 
 	// Outputting things for visuals
-	std::cout << '\n' <<">===========================================================<" << '\n';
-	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond" << '\n';
+	std::cout << "\n===========================================================\n";
+	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond\n";
 	std::cout << "Enter number: ";
 
 	std::getline(std::cin, input);
 
-	if (input.rfind("debug ", 0) == 0) { debug = true; } // Debug allows you to see what is going, at the cost of speed
+	/// Modes
+	if (input.rfind("debug ", 0) == 0) // Debug allows you to see what is going, at the cost of speed
+		debug = true;
+	if (input.find("hex ", 0) == 0)
+	{
+		hex = true;
+		input = input.substr(4);
+	}
 
 	// Removes any characters from string
-	// Removes any characters from string
-	input = RemoveChars(input);
-	
+	if (!hex) 
+	{
+		input = RemoveChars(input); 
+		checkNumber = std::stoull(input);
+	}
+	else 
+	{ 
+		input = RemoveCharsHex(input);
+		checkNumber = std::stoull(input, nullptr, 16); 
+	}
 	if (input.empty()) {
 		/// Close the program if there are no numbers
 		std::cout << "Error: no numbers found";
-		std::cout << '\n' << ">===========================================================<" << '\n';
+		std::cout << "\n===========================================================\n";
 		return 1;
 	}
-
-	// Getting numbers from input
-	const unsigned long long checkNumber = std::stoull(input);
 
 	// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
 	{
-		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size" << '\n';
+		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size\n";
 		prime = LongPrimeCheck(checkNumber, debug); /// LongPrimeCheck is faster, but requires a high number to function
 	}
 	else
@@ -145,13 +186,15 @@ int main() {
 		prime = PrimeCheck(checkNumber, debug);
 	}
 
-	if (prime) {
-		std::cout << std::endl << checkNumber << " is a prime";
-	}
-	else {
-		std::cout << std::endl << checkNumber << " is not a prime";
-	}
-	
-	std::cout << '\n' << "===========================================================<" << '\n';
+
+	if (prime) 
+		std::cout << '\n' << input << " is a prime";
+	else 
+		std::cout << '\n' << input << " is not a prime";
+
+	std::cout << "\n===========================================================\n";
+
+	std::cout << "Press any key to close\n";
+	std::cin.get();
 	return 0;
 }
