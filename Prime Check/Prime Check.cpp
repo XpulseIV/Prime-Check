@@ -11,25 +11,6 @@
 #include "IsNotSimplePrime.h"
 #include "DeleteChars.h"
 
-unsigned long long to_decimal(std::string number, const int base /*= 16*/)
-{
-	auto ans = 0;
-	const int size = number.length();
-
-	for (auto i = 0; i < size; i++)
-	{
-		if (number[i] >= 'A')
-		{
-			ans += (number[i] - 'A' + 10) * pow(base, size - i - 1);
-		}
-		else
-		{
-			ans += (number[i] - '0') * pow(base, size - i - 1);
-		}
-	}
-	return ans;
-}
-
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	long long i = 0;
 	long long j = 0;
