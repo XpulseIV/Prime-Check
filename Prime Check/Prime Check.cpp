@@ -185,7 +185,7 @@ int main() {
 	char* numberInCharArray = &input[0];
 
 	if ((!baseInt == 10) == 0) {
-		checkNumber = strtoull(numberInCharArray ,NULL, baseInt);
+		checkNumber = std::stoull(numberInCharArray ,NULL, baseInt);
 	}
 	else
 	{
