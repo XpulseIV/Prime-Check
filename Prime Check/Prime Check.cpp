@@ -56,7 +56,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	{
 		std::cout << "Primes are: " << std::endl;
 
-		for (unsigned long long sieveIndex = 1; sieveIndex <= untilNumber; sieveIndex++)
+		for (unsigned long long sieveIndex = 1; sieveIndex <= i; sieveIndex++)
 		{
 			if (sieve[sieveIndex])
 			{
@@ -120,7 +120,7 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 	{
 		std::cout << "Primes are: " << std::endl;
 
-		for (unsigned long long sieveIndex = 1; sieveIndex <= untilNumber; sieveIndex++)
+		for (unsigned long long sieveIndex = 1; sieveIndex <= i; sieveIndex++)
 		{
 			if (sieve[sieveIndex])
 			{
