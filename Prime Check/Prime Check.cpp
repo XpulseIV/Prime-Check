@@ -71,6 +71,19 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 			}
 		}
 	}
+	if (debug)
+	{
+		std::cout << "Primes are: " << std::endl;
+
+		for (unsigned long long sieveIndex = 1; sieveIndex <= untilNumber; sieveIndex++)
+		{
+			if (sieve[sieveIndex])
+			{
+				std::cout << sieveIndex << std::endl;
+			}
+		}
+	}
+
 	return prime;
 }
 
@@ -121,6 +134,20 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 			}
 		}
 	}
+
+	if (debug)
+	{
+		std::cout << "Primes are: " << std::endl;
+
+		for (unsigned long long sieveIndex = 1; sieveIndex <= untilNumber; sieveIndex++)
+		{
+			if (sieve[sieveIndex])
+			{
+				std::cout << sieveIndex << std::endl;
+			}
+		}
+	}
+
 	return prime;
 }
 
@@ -141,7 +168,7 @@ int main() {
 	std::getline(std::cin, input);
 
 	std::cout << "Enter the base of that number: ";
-	
+
 	std::getline(std::cin, base);
 
 	if (base.empty()) {
@@ -151,8 +178,12 @@ int main() {
 	{
 		baseInt = std::stoi(base);
 	}
-	
-	if (input.rfind("debug ", 0) == 0) { debug = true; } // Debug allows you to see what is going, at the cost of speed
+
+	if (input.rfind("debug ", 0) == 0) // Debug allows you to see what is going, at the cost of speed
+	{
+		debug = true;
+		input = input.substr(6);
+	}
 
 	// Removes any characters from string
 	if (baseInt == 10) {
@@ -165,19 +196,21 @@ int main() {
 			return 1;
 		}
 	}
-	
-	for (int charc = 1; charc <= input.length(); charc++)
+	else
 	{
-		if (!isdigit(input[charc]))
+		for (int charc = 0; charc <= input.length(); charc++)
 		{
-			if (std::islower(input[charc]))
+			if (!isdigit(input[charc]))
 			{
-				input[charc] = std::toupper(input[charc]);
-			}
+				if (std::islower(input[charc]))
+				{
+					input[charc] = std::toupper(input[charc]);
+				}
 
-			else
-			{
-				continue;
+				else
+				{
+					continue;
+				}
 			}
 		}
 	}
@@ -185,7 +218,7 @@ int main() {
 	char* numberInCharArray = &input[0];
 
 	if ((!baseInt == 10) == 0) {
-		checkNumber = std::stoull(numberInCharArray ,NULL, baseInt);
+		checkNumber = std::stoull(numberInCharArray, NULL, baseInt);
 	}
 	else
 	{
@@ -210,9 +243,9 @@ int main() {
 	else {
 		std::cout << '\n' << checkNumber << " is not a prime";
 	}
-	
+
 	std::cout << "\n===========================================================\n";
-	
+
 	std::cout << "Press any key to close\n";
 	std::cin.get();
 	return 0;
