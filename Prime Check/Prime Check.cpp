@@ -11,7 +11,7 @@
 #include "IsNotSimplePrime.h"
 #include "DeleteChars.h"
 
-int to_decimal(std::string number, const int base /*= 16*/)
+unsigned long long to_decimal(std::string number, const int base /*= 16*/)
 {
 	auto ans = 0;
 	const int size = number.length();
@@ -128,6 +128,7 @@ int main() {
 	bool prime;
 	bool debug = false;
 	unsigned long long checkNumber;
+	int baseInt;
 
 	std::string input;
 	std::string base;
@@ -142,9 +143,8 @@ int main() {
 	std::cout << "Enter the base of that number: ";
 	
 	std::getline(std::cin, base);
-	int baseInt;
 
-	if (base == "") {
+	if (base.empty()) {
 		baseInt = 10;
 	}
 	else
@@ -182,6 +182,7 @@ int main() {
 
 	if ((!baseInt == 10) == 0) {
 		checkNumber = to_decimal(input, baseInt);
+		strtoull()
 		
 	}
 	else
