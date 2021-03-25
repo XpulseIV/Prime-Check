@@ -1,3 +1,2 @@
 #pragma once
-std::string RemoveChars(std::string checkString);
-std::string RemoveCharsHex(std::string checkString);
+std::string RemoveChars(std::string number);

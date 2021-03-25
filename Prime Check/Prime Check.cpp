@@ -135,11 +135,11 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 int main() {
 	bool prime;
 	bool debug = false;
-	bool hex = false;
-	bool noNumber = false;
 	unsigned long long checkNumber;
+	int baseInt;
 
 	std::string input;
+	std::string base;
 
 	// Outputting things for visuals
 	std::cout << "\n===========================================================\n";
@@ -148,31 +148,63 @@ int main() {
 
 	std::getline(std::cin, input);
 
-	/// Modes
-	if (input.rfind("debug ", 0) == 0) // Debug allows you to see what is going, at the cost of speed
-		debug = true;
-	if (input.find("hex ", 0) == 0)
+	std::cout << "Enter the base of that number: ";
+
+	std::getline(std::cin, base);
+
+	if (base.empty()) {
+		baseInt = 10;
+	}
+	else
 	{
-		hex = true;
-		input = input.substr(4);
+		baseInt = std::stoi(base);
+	}
+
+	if (input.rfind("debug ", 0) == 0) // Debug allows you to see what is going, at the cost of speed
+	{
+		debug = true;
+		input = input.substr(6);
 	}
 
 	// Removes any characters from string
-	if (!hex) 
+	if (baseInt == 10) {
+		input = RemoveChars(input);
+
+		if (input.empty()) {
+			/// Close the program if there are no numbers
+			std::cout << "Error: no numbers found";
+			std::cout << "\n===========================================================\n";
+			return 1;
+		}
+	}
+	else
 	{
-		input = RemoveChars(input); 
+		for (int charc = 0; charc <= input.length(); charc++)
+		{
+			if (!isdigit(input[charc]))
+			{
+				if (std::islower(input[charc]))
+				{
+					input[charc] = std::toupper(input[charc]);
+				}
+
+				else
+				{
+					continue;
+				}
+			}
+		}
+	}
+
+	char* numberInCharArray = &input[0];
+
+	if ((!baseInt == 10) == 0) {
+		checkNumber = std::stoull(numberInCharArray, NULL, baseInt);
+	}
+	else
+	{
+		// Getting numbers from input
 		checkNumber = std::stoull(input);
-	}
-	else 
-	{ 
-		input = RemoveCharsHex(input);
-		checkNumber = std::stoull(input, nullptr, 16); 
-	}
-	if (input.empty()) {
-		/// Close the program if there are no numbers
-		std::cout << "Error: no numbers found";
-		std::cout << "\n===========================================================\n";
-		return 1;
 	}
 
 	// Actually checking if the number is a prime
@@ -186,11 +218,12 @@ int main() {
 		prime = PrimeCheck(checkNumber, debug);
 	}
 
-
-	if (prime) 
-		std::cout << '\n' << input << " is a prime";
-	else 
-		std::cout << '\n' << input << " is not a prime";
+	if (prime) {
+		std::cout << '\n' << checkNumber << " is a prime";
+	}
+	else {
+		std::cout << '\n' << checkNumber << " is not a prime";
+	}
 
 	std::cout << "\n===========================================================\n";
 
