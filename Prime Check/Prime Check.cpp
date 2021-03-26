@@ -152,6 +152,8 @@ int main() {
 
 	std::getline(std::cin, base);
 
+	auto startTime = std::chrono::high_resolution_clock::now();
+	
 	if (base.empty()) {
 		baseInt = 10;
 	}
@@ -224,9 +226,13 @@ int main() {
 	else {
 		std::cout << '\n' << checkNumber << " is not a prime";
 	}
-
+	auto endTime = std::chrono::high_resolution_clock::now();
+	
+	
 	std::cout << "\n===========================================================\n";
 
+	auto timeTookInUs = std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count();
+	
 	std::cout << "Press any key to close\n";
 	std::cin.get();
 	return 0;
