@@ -1,8 +1,8 @@
-#include "IsNotSimplePrime.h"
+#include "is_not_simple_prime.h"
 
 long long x = 46397;
 
-bool IsNotSimplePrime(int dumb)
+bool is_not_simple_prime(int dumb)
 {
 	x += 2;
 
