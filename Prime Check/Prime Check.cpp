@@ -142,7 +142,7 @@ int main() {
 	std::string base;
 
 	// Outputting things for visuals
-	std::cout << "\n===========================================================\n";
+	std::cout << "===========================================================\n";
 	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond\n";
 	std::cout << "Enter number: ";
 
