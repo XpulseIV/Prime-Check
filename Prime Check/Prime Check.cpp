@@ -6,6 +6,8 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
+#include <vector>
+
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
@@ -19,14 +21,14 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	auto* sieve = new bool[untilNumber];
+	std::vector<char> sieve;
 
-	std::fill_n(sieve, untilNumber, 1);
+	sieve.resize(untilNumber, 1);
 
 	if (!HardcodedValues(checkNumber)) { return prime; } /// Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// The line below is what makes LongPrimeCheck faster
-	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
+	std::replace_if(sieve.begin() + 46399, sieve.end() + untilNumber, IsNotSimplePrime, 2);
 
 	for (i = 46337; i < untilNumber; i++) {
 		if (sieve[i]) {
@@ -77,9 +79,9 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 
 	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	auto* sieve = new bool[untilNumber];
+	std::vector<char> sieve;
 
-	std::fill_n(sieve, untilNumber, true);
+	sieve.resize(untilNumber, 1);
 
 	for (i = 2; i < untilNumber; i++)
 	{
