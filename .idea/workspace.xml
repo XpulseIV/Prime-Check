@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" ENABLED="true" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="855ccc42-03fa-4fc9-9adb-0431d713dfd5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Prime Check/DeleteChars.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/DeleteChars.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/DeleteChars.h" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/DeleteChars.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/Header.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/IsNotSimplePrime.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/IsNotSimplePrime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/Prime Check.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/Prime Check.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/Prime Check.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/Prime Check.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/Prime Check.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/Prime Check.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/hardcoding.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/hardcoding.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/hardcoding.h" beforeDir="false" afterPath="$PROJECT_DIR$/Prime Check/hardcoding.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime Check/someTestThings.cpp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qOhJkpkGkDSew0WjUQHzDYOUNR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="855ccc42-03fa-4fc9-9adb-0431d713dfd5" name="Default Changelist" comment="" />
+      <created>1616956473264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616956473264</updated>
+      <workItem from="1616956474778" duration="1251000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
