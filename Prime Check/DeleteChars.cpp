@@ -1,10 +1,11 @@
 #include <iostream>
 
-std::string remove_chars(std::string check_string) {
-	for (int i = 0; i < check_string.size(); i++) {
+auto remove_chars(std::string check_string) -> std::string
+{
+	for (auto i = 0; i < check_string.size(); i++) {
 		if (!isdigit(check_string[i]))
 		{
-			checkString.erase(check_string.begin() + i);
+			check_string.erase(check_string.begin() + i);
 			i--; /// Because we have just decrased the length by 1, i is actually the next character already, so we subtract 1 so w don't miss any characters
 		}
 	}

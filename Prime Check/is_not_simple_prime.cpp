@@ -2,7 +2,7 @@
 
 long long x = 46397;
 
-bool is_not_simple_prime(int dumb)
+auto is_not_simple_prime(int dumb) -> bool
 {
 	x += 2;
 
