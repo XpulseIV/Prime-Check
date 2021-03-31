@@ -21,15 +21,15 @@ auto long_prime_check(const unsigned long long check_number, const bool debug) -
 
 	const long long until_number = 1 + ceil(sqrt(check_number));
 
-	std::vector<char> sieve;
+	auto* sieve = new bool[until_number];
 
-	sieve.resize(until_number, 1);
+	std::fill_n(sieve, until_number, 1);
 
 	if (!hardcoded_values(check_number)) { return prime; }
 	/// Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// The line below is what makes LongPrimeCheck faster
-	std::replace_if(sieve.begin() + 46399, sieve.end() + until_number, is_not_simple_prime, 2);
+	std::replace_if(sieve + 46399, sieve + until_number, is_not_simple_prime, 2);
 
 	for (i = 46337; i < until_number; i++)
 	{
@@ -87,9 +87,9 @@ auto prime_check(const int check_number, const bool debug) -> bool
 
 	const int until_number = 1 + ceil(sqrt(check_number));
 
-	std::vector<char> sieve;
+	auto* sieve = new bool[until_number];
 
-	sieve.resize(until_number, 1);
+	std::fill_n(sieve, until_number, 1);
 
 	for (i = 2; i < until_number; i++)
 	{
@@ -211,13 +211,8 @@ auto main() -> int
 
 	auto* const number_in_char_array = &input[0];
 
-	if (!base_int == 10 == 0) {
+	if ((!base_int == 10) == 0) {
 		check_number = std::stoull(number_in_char_array, nullptr, base_int);
-	}
-	else
-	{
-		// Getting numbers from input
-		check_number = std::stoull(input);
 	}
 
 	// Actually checking if the number is a prime
