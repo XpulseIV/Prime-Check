@@ -1,8 +1,9 @@
-//Welcome to the
-//Super Omega Prime Check Deluxe of Doom from Hell and Beyond
+/// Welcome to the
+/// Super Omega Prime Check Deluxe of Doom from Hell and Beyond
 
 #include <thread>
 #include <iostream>
+#include <vector>
 #include <cmath>
 #include <string>
 #include <algorithm>
@@ -19,19 +20,16 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	auto* sieve = new bool[untilNumber];
+	std::vector<bool> sieve(untilNumber); // Initialized a vector with zeros
 
-	std::fill_n(sieve, untilNumber, 1);
-
-	if (!HardcodedValues(checkNumber)) { return prime; } /// Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
+	if (!HardcodedValues(checkNumber)) { return prime; } // Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// The line below is what makes LongPrimeCheck faster
-	std::replace_if(sieve + 46399, sieve + untilNumber, IsNotSimplePrime, 2);
+	std::replace_if(sieve.begin() + 46399, sieve.end(), IsNotSimplePrime, true);
 
 	for (i = 46337; i < untilNumber; i++) {
-		if (sieve[i]) {
+		if (!sieve[i]) {
 			if (debug) { std::cout << "Prime: " << i << '\n'; }
-
 			if (checkNumber % i == 0) {
 				if (checkNumber != i) {
 					prime = false;
@@ -46,7 +44,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 			}
 
 			for (j = i * i; j < untilNumber; j += i) {
-				sieve[j] = false;
+				sieve[j] = true;
 
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
@@ -77,13 +75,11 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 
 	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	auto* sieve = new bool[untilNumber];
-
-	std::fill_n(sieve, untilNumber, true);
+	std::vector<bool> sieve(untilNumber);
 
 	for (i = 2; i < untilNumber; i++)
 	{
-		if (sieve[i])
+		if (!sieve[i])
 		{
 			if (debug)
 			{
@@ -109,7 +105,7 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 
 			for (j = i * i; j < untilNumber; j += i)
 			{
-				sieve[j] = false;
+				sieve[j] = true;
 
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
@@ -136,12 +132,11 @@ int main() {
 	bool prime;
 	bool debug = false;
 	bool hex = false;
-	bool noNumber = false;
 	unsigned long long checkNumber;
 
 	std::string input;
 
-	// Outputting things for visuals
+	/// Outputting things for visuals
 	std::cout << "\n===========================================================\n";
 	std::cout << "Super Omega Prime Check Deluxe Of Doom From Hell And Beyond\n";
 	std::cout << "Enter number: ";
@@ -157,7 +152,7 @@ int main() {
 		input = input.substr(4);
 	}
 
-	// Removes any characters from string
+	/// Remove any characters from string
 	if (!hex) 
 	{
 		input = RemoveChars(input); 
@@ -169,17 +164,17 @@ int main() {
 		checkNumber = std::stoull(input, nullptr, 16); 
 	}
 	if (input.empty()) {
-		/// Close the program if there are no numbers
+		// Close the program if there are no numbers
 		std::cout << "Error: no numbers found";
 		std::cout << "\n===========================================================\n";
 		return 1;
 	}
 
-	// Actually checking if the number is a prime
+	/// Actually checking if the number is a prime
 	if (checkNumber > 2147483647)
 	{
 		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size\n";
-		prime = LongPrimeCheck(checkNumber, debug); /// LongPrimeCheck is faster, but requires a high number to function
+		prime = LongPrimeCheck(checkNumber, debug); // LongPrimeCheck is faster, but requires a high number to function
 	}
 	else
 	{
