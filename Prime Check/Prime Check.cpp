@@ -7,6 +7,8 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
+#include <vector>
+
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
@@ -110,6 +112,7 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
 		}
+
 	}
 
 	if (debug)
