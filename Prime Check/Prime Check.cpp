@@ -22,12 +22,10 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
 
-	std::vector<bool> sieve(untilNumber); // Initialized a vector with zeros
+	std::vector<bool> sieve(untilNumber); // Initialise a vector with zeros
 
-	if (!HardcodedValues(checkNumber)) { return prime; } // Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
+	if (!HardcodedValues(checkNumber)) { return false; } // Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
-	// The line below is what makes LongPrimeCheck faster
-	std::replace_if(sieve.begin() + 46399, sieve.end(), IsNotSimplePrime, true);
 
 	for (i = 46337; i < untilNumber; i++) {
 		if (!sieve[i]) {
