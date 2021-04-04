@@ -1,11 +1,14 @@
 #include <vector>
+#include <algorithm>
 
 #include "IsNotSimplePrime.h"
 
 /// Scroll to bottom for Replace function
 
-bool IsNotSimplePrime(long long x)
+bool IsNotSimplePrime(int dumb2)
 {
+	x += 2;
+
 	return (/// Just hard coding, nothing to see here
 		(x % 2) == 0 ||
 		(x % 3) == 0 ||
@@ -4800,16 +4803,10 @@ bool IsNotSimplePrime(long long x)
 		(x % 46327) == 0 ||
 		(x % 46337) == 0);
 }
-std::vector<bool> Replace(std::vector<bool> sieve, long long start, long long stop) {
-	long long j = start - 2;
 
-	for (long long i = start; i < stop; i += 2)
-	{
-		j += 2;
-		if (IsNotSimplePrime(j))
-		{
-			sieve[i] = true;
-		}
-	}
+std::vector<bool> Replace2(std::vector<bool> sieve, long long untilNumber)
+{
+	x += untilNumber / 2;
+	std::replace_if(sieve.begin(), sieve.end(), IsNotSimplePrime, true);
 	return sieve;
 }
