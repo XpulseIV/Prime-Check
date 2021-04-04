@@ -142,10 +142,12 @@ auto prime_check(const int check_number, const bool debug) -> bool
 	return prime;
 }
 
-auto main() -> int
+int main()
 {
+	while (true) {
+	}
 	bool prime;
-	auto debug = false;
+	bool debug = false;
 	unsigned long long check_number;
 	int base_int;
 
@@ -163,7 +165,7 @@ auto main() -> int
 
 	std::getline(std::cin, base);
 
-	const auto start_time = std::chrono::high_resolution_clock::now();
+	const std::chrono::steady_clock::time_point start_time = std::chrono::high_resolution_clock::now();
 
 	if (base.empty()) {
 		base_int = 10;
@@ -192,7 +194,7 @@ auto main() -> int
 	}
 	else
 	{
-		for (auto charc = 0; charc <= input.length(); charc++)
+		for (int charc = 0; charc <= input.length(); charc++)
 		{
 			if (!isdigit(input[charc]))
 			{
@@ -209,7 +211,7 @@ auto main() -> int
 		}
 	}
 
-	auto* const number_in_char_array = &input[0];
+	char* const number_in_char_array = &input[0];
 
 	if ((!base_int == 10) == 0) {
 		check_number = std::stoull(number_in_char_array, nullptr, base_int);
@@ -236,7 +238,7 @@ auto main() -> int
 
 	std::cout << "\n===========================================================\n";
 
-	const auto time_took_in_us = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
+	const long long time_took_in_us = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
 
 	std::cout << time_took_in_us << std::endl;
 
