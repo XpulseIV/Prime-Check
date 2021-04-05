@@ -144,8 +144,6 @@ auto prime_check(const int check_number, const bool debug) -> bool
 
 int main()
 {
-	while (true) {
-	}
 	bool prime;
 	bool debug = false;
 	unsigned long long check_number;
