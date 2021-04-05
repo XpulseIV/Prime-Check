@@ -213,7 +213,7 @@ int main() {
 
 	std::cout << "\n===========================================================\n";
 
-	std::cout << "Press any key to close\n";
+	std::cout << "Press Enter to close\n";
 	std::cin.get();
 	return 0;
 }
