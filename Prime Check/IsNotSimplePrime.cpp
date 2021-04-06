@@ -4800,3 +4800,16 @@ bool IsNotSimplePrime(int dumb)
 		(x % 46327) == 0 ||
 		(x % 46337) == 0);
 }
+std::vector<bool> Replace(std::vector<bool> sieve, long long start, long long stop, long long begin) {
+	long long j = begin - 2;
+
+	for (long long i = start; i < stop; i += 2)
+	{
+		j += 2;
+		if (IsNotSimplePrime(j))
+		{
+			sieve[i] = true;
+		}
+	}
+	return sieve;
+}

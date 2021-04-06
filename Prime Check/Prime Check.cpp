@@ -15,17 +15,17 @@
 #include "DeleteChars.h"
 
 bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
-	long long i = 0;
-	long long j = 0;
+	long long i;
 
 	auto prime = false;
 
-	const long long untilNumber = 1 + ceil(sqrt(checkNumber));
+	const long long untilNumber = ceil(sqrt(checkNumber));
 
 	std::vector<bool> sieve(untilNumber); // Initialise a vector with zeros
 
 	if (!HardcodedValues(checkNumber)) { return false; } // Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
 
+	std::vector<bool> sieve(untilNumber);
 
 	for (i = 46337; i < untilNumber; i++) {
 		if (!sieve[i]) {
@@ -50,6 +50,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 			}
 		}
 	}
+	
 	if (debug)
 	{
 		std::cout << "Primes are: " << std::endl;
@@ -58,7 +59,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 		{
 			if (sieve[sieveIndex])
 			{
-				std::cout << sieveIndex << std::endl;
+				std::cout << sieveIndex << "\n";
 			}
 		}
 	}
