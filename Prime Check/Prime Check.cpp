@@ -86,10 +86,12 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
 		if ((prime[0]) && (prime[1]))
 		{
+			std::cout << "\n"; // solves issue
 			return true;
 		}
 		else
 		{
+			std::cout << "\n";
 			return false;
 		}
 	}
