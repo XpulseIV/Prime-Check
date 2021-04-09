@@ -60,7 +60,7 @@ bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 	if (!HardcodedValues(checkNumber)) { return false; } // Do not do anything else if checkNumber is divisible by a number in IsNotSimplePrime
 
 	// Time  approximation
-	const auto primes = round(untilNumber / log(untilNumber - 1)); // find approximate amount of primes
+	const long long primes = round(untilNumber / log(untilNumber - 1)); // find approximate amount of primes
 	std::cout << "Approximated number of primes: " << primes << "\n";
 	
 	const auto t1 = std::chrono::high_resolution_clock::now();
