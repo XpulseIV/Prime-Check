@@ -1,11 +1,7 @@
 #include "IsNotSimplePrime.h"
 
-long long x = 46397;
-
-bool IsNotSimplePrime(int dumb)
+bool IsNotSimplePrime(unsigned int x)
 {
-	x += 2;
-
 	return (/// Just hard coding, nothing to see here
 		(x % 2) == 0 ||
 		(x % 3) == 0 ||
@@ -4799,17 +4795,4 @@ bool IsNotSimplePrime(int dumb)
 		(x % 46309) == 0 ||
 		(x % 46327) == 0 ||
 		(x % 46337) == 0);
-}
-std::vector<bool> Replace(std::vector<bool> sieve, long long start, long long stop, long long begin) {
-	long long j = begin - 2;
-
-	for (long long i = start; i < stop; i += 2)
-	{
-		j += 2;
-		if (IsNotSimplePrime(j))
-		{
-			sieve[i] = true;
-		}
-	}
-	return sieve;
 }

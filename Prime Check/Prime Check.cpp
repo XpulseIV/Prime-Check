@@ -6,73 +6,105 @@
 #include <vector>
 #include <cmath>
 #include <string>
+#include <chrono>
 #include <algorithm>
-#include <vector>
-
 
 #include "hardcoding.h"
 #include "IsNotSimplePrime.h"
 #include "DeleteChars.h"
 
-bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
-	long long i;
+bool prime[] = {false, false};
 
-	auto prime = false;
+void SplitSieve(unsigned long long checkNumber, long long until, unsigned int i, int thread,bool debug)
+{
+	std::vector<unsigned int> sieve(until + 2);
+	
+	unsigned int index = 2;
+	for(; i < until; i+= 2)
+	{
+		sieve[index] = i;
+		index++;
+	}
 
-	const long long untilNumber = ceil(sqrt(checkNumber));
-
-	std::vector<bool> sieve(untilNumber); // Initialise a vector with zeros
-
-	if (!HardcodedValues(checkNumber)) { return false; } // Do not do replace_if if checkNumber is divisible by a number in IsNotSimplePrime
-
-	std::vector<bool> sieve(untilNumber);
-
-	for (i = 46337; i < untilNumber; i++) {
-		if (!sieve[i]) {
+	std::replace_if(sieve.begin(), sieve.end(), IsNotSimplePrime, 0);
+	
+	for (i = 2; i < sieve.size(); i++) {
+		if (sieve[i] != 0) {
 			if (debug) { std::cout << "Prime: " << i << '\n'; }
 			if (checkNumber % i == 0) {
 				if (checkNumber != i) {
-					prime = false;
+					prime[thread] = false;
 					break;
 				}
 				else {
-					prime = true;
+					prime[thread] = true;
 				}
 			}
 			else {
-				prime = true;
+				prime[thread] = true;
 			}
 
-			for (j = i * i; j < untilNumber; j += i) {
-				sieve[j] = true;
+			for (auto j = sieve[i] * sieve[i]; j < until; j += sieve[i]) {
+				sieve[j] = 0;
 
 				if (debug) { std::cout << "Composite: " << j << '\n'; } // A composite is the opposite of a prime
 			}
 		}
 	}
-	
-	if (debug)
-	{
-		std::cout << "Primes are: " << std::endl;
-
-		for (unsigned long long sieveIndex = 1; sieveIndex <= i; sieveIndex++)
-		{
-			if (sieve[sieveIndex])
-			{
-				std::cout << sieveIndex << "\n";
-			}
-		}
-	}
-
-	return prime;
 }
 
-bool PrimeCheck(const int checkNumber, const bool debug)
-{
-	int i = 0;
-	int j = 0;
+bool LongPrimeCheck(const unsigned long long checkNumber, const bool debug) {
 
-	auto prime = false;
+	const long long untilNumber = ceil(sqrt(checkNumber));
+
+	if (!HardcodedValues(checkNumber)) { return false; } // Do not do anything else if checkNumber is divisible by a number in IsNotSimplePrime
+
+	// Time  approximation
+	const auto primes = round(untilNumber / log(untilNumber - 1)); // find approximate amount of primes
+	std::cout << "Approximated number of primes: " << primes << "\n";
+	
+	const auto t1 = std::chrono::high_resolution_clock::now();
+	
+	std::vector<unsigned int> timeTest(1, 46399);
+	std::replace_if(timeTest.begin(), timeTest.end(), IsNotSimplePrime, 1);
+	
+	const auto replaceTime = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - t1);
+	std::cout << "Approximate time for Replace: " << replaceTime.count() * primes << "s\n";
+
+	// Multi-threading
+
+	long long i = untilNumber / 2;
+	i -= 46399;
+
+	if (i>0)
+	{
+		std::thread thread1(SplitSieve, checkNumber, i, 46399, 0, debug);
+		std::thread thread2(SplitSieve, checkNumber, untilNumber, i, 1, debug);
+
+		thread1.join();
+		thread2.join();
+
+		if ((prime[0]) && (prime[1]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		SplitSieve(checkNumber, untilNumber, 46399, 0, debug);
+
+		return prime[0];
+	}
+	
+}
+
+bool PrimeCheck(const unsigned int checkNumber, const bool debug)
+{
+	int i;
 
 	const int untilNumber = 1 + ceil(sqrt(checkNumber));
 
@@ -91,20 +123,20 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 			{
 				if (checkNumber != i)
 				{
-					prime = false;
+					prime[0] = false;
 					break;
 				}
 				else
 				{
-					prime = true;
+					prime[0] = true;
 				}
 			}
 			else
 			{
-				prime = true;
+				prime[0] = true;
 			}
 
-			for (j = i * i; j < untilNumber; j += i)
+			for (int j = i * i; j < untilNumber; j += i)
 			{
 				sieve[j] = true;
 
@@ -127,7 +159,7 @@ bool PrimeCheck(const int checkNumber, const bool debug)
 		}
 	}
 
-	return prime;
+	return prime[0];
 }
 
 int main() {
@@ -191,7 +223,7 @@ int main() {
 
 	std::cout << "\n===========================================================\n";
 
-	std::cout << "Press any key to close\n";
+	std::cout << "Press Enter to close\n";
 	std::cin.get();
 	return 0;
 }
