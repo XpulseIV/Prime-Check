@@ -1,25 +1,23 @@
 //Welcome to the
 //Super Omega Prime Check Deluxe of Doom from Hell and Beyond
 
-#include <algorithm>
-#include <cmath>
 #include <iostream>
+#include <cmath>
 #include <string>
 #include <thread>
-#include <vector>
 
+#include "algorithm"
 #include "DeleteChars.h"
 #include "hardcoding.h"
 #include "is_not_simple_prime.h"
 
 auto long_prime_check(const unsigned long long check_number, const bool debug) -> bool
 {
-	long long i = 0;
-	long long j = 0;
+	long long i;
 
 	auto prime = false;
 
-	const long long until_number = 1 + ceil(sqrt(check_number));
+	const long long until_number = ceil(sqrt(check_number)) + 1;
 
 	auto* sieve = new bool[until_number];
 
@@ -54,7 +52,7 @@ auto long_prime_check(const unsigned long long check_number, const bool debug) -
 				prime = true;
 			}
 
-			for (j = i * i; j < until_number; j += i)
+			for (long long j = i * i; j < until_number; j += i)
 			{
 				sieve[j] = false;
 
@@ -81,7 +79,6 @@ auto long_prime_check(const unsigned long long check_number, const bool debug) -
 auto prime_check(const int check_number, const bool debug) -> bool
 {
 	auto i = 0;
-	auto j = 0;
 
 	auto prime = false;
 
@@ -117,7 +114,7 @@ auto prime_check(const int check_number, const bool debug) -> bool
 				prime = true;
 			}
 
-			for (j = i * i; j < until_number; j += i)
+			for (auto j = i * i; j < until_number; j += i)
 			{
 				sieve[j] = false;
 
@@ -142,11 +139,15 @@ auto prime_check(const int check_number, const bool debug) -> bool
 	return prime;
 }
 
+/**
+ * \brief 
+ * \return 
+ */
 int main()
 {
 	bool prime;
 	bool debug = false;
-	unsigned long long check_number;
+	unsigned long long check_number = 0;
 	int base_int;
 
 	std::string input;
@@ -211,7 +212,7 @@ int main()
 
 	char* const number_in_char_array = &input[0];
 
-	if ((!base_int == 10) == 0) {
+	if (!base_int == 10 == 0) {
 		check_number = std::stoull(number_in_char_array, nullptr, base_int);
 	}
 
