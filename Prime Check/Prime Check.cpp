@@ -139,10 +139,6 @@ auto prime_check(const int check_number, const bool debug) -> bool
 	return prime;
 }
 
-/**
- * \brief 
- * \return 
- */
 int main()
 {
 	bool prime;
