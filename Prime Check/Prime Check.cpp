@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <boost/multiprecision/gmp.hpp>
 
 #include "algorithm"
 #include "DeleteChars.h"
@@ -78,9 +79,9 @@ bool long_prime_check(const unsigned long long check_number, const bool debug)
 
 bool prime_check(const int check_number, const bool debug)
 {
-	auto i = 0;
+	int i = 0;
 
-	auto prime = false;
+	bool prime = false;
 
 	const int until_number = 1 + ceil(sqrt(check_number));
 
@@ -114,7 +115,7 @@ bool prime_check(const int check_number, const bool debug)
 				prime = true;
 			}
 
-			for (auto j = i * i; j < until_number; j += i)
+			for (int j = i * i; j < until_number; j += i)
 			{
 				sieve[j] = false;
 
@@ -127,7 +128,7 @@ bool prime_check(const int check_number, const bool debug)
 	{
 		std::cout << "Primes are: " << std::endl;
 
-		for (unsigned long long sieve_index = 1; sieve_index <= i; sieve_index++)
+		for (int sieve_index = 1; sieve_index <= i; sieve_index++)
 		{
 			if (sieve[sieve_index])
 			{
@@ -159,8 +160,6 @@ int main()
 	std::cout << "Enter the base of that number: ";
 
 	std::getline(std::cin, base);
-
-	const std::chrono::steady_clock::time_point start_time = std::chrono::high_resolution_clock::now();
 
 	if (base.empty()) {
 		base_int = 10;
@@ -229,13 +228,8 @@ int main()
 	else {
 		std::cout << '\n' << check_number << " is not a prime";
 	}
-	const auto end_time = std::chrono::high_resolution_clock::now();
 
 	std::cout << "\n===========================================================\n";
-
-	const long long time_took_in_us = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
-
-	std::cout << time_took_in_us << std::endl;
 
 	std::cout << "Press any key to close\n";
 	std::cin.get();
