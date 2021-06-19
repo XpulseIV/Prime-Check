@@ -79,7 +79,7 @@ bool long_prime_check(const unsigned long long check_number, const bool debug)
 
 bool prime_check(const int check_number, const bool debug)
 {
-	int i = 0;
+	int i;
 
 	bool prime = false;
 
@@ -188,13 +188,13 @@ int main()
 	}
 	else
 	{
-		for (int charc = 0; charc <= input.length(); charc++)
+		for (int chars = 0; chars <= input.length(); chars++)
 		{
-			if (!isdigit(input[charc]))
+			if (!isdigit(input[chars]))
 			{
-				if (std::islower(input[charc]))
+				if (std::islower(input[chars]))
 				{
-					input[charc] = std::toupper(input[charc]);
+					input[chars] = std::toupper(input[chars]);
 				}
 
 				else
@@ -205,13 +205,14 @@ int main()
 		}
 	}
 
-	char* const number_in_char_array = &input[0];
+	const std::string n_string = input;
 
 	if (!base_int == 10 == 0) {
-		check_number = std::stoull(number_in_char_array, nullptr, base_int);
+		check_number = std::stoull(n_string, nullptr, base_int);
 	}
 
 	// Actually checking if the number is a prime
+	
 	if (check_number > 2147483647)
 	{
 		std::cout << "Running long prime check, expect wait times up to 2 hours depending on number size\n";
@@ -219,7 +220,7 @@ int main()
 	}
 	else
 	{
-		prime = prime_check(check_number, debug);
+		prime = prime_check(static_cast<int>(check_number), debug);
 	}
 
 	if (prime) {

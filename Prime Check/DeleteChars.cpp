@@ -2,7 +2,7 @@
 
 std::string remove_chars(std::string check_string)
 {
-	for (auto i = 0; i < check_string.size(); i++) {
+	for (unsigned long long i = 0; i < check_string.size(); i++) {
 		if (!isdigit(check_string[i]))
 		{
 			check_string.erase(check_string.begin() + i);
