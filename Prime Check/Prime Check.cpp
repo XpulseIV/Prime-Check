@@ -1,8 +1,8 @@
 //Welcome to the
 //Super Omega Prime Check Deluxe of Doom from Hell and Beyond
 
-#include <cmath>
 #include <iostream>
+#include <cmath>
 #include <string>
 #include <thread>
 #include <boost/multiprecision/gmp.hpp>
@@ -12,7 +12,7 @@
 #include "hardcoding.h"
 #include "is_not_simple_prime.h"
 
-bool long_prime_check(const unsigned long long check_number, const bool debug)
+auto long_prime_check(const unsigned long long check_number, const bool debug) -> bool
 {
 	long long i;
 
@@ -77,7 +77,7 @@ bool long_prime_check(const unsigned long long check_number, const bool debug)
 	return prime;
 }
 
-bool prime_check(const int check_number, const bool debug)
+auto prime_check(const int check_number, const bool debug) -> bool
 {
 	int i;
 
