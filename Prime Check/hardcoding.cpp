@@ -1,4 +1,4 @@
-bool hardcoded_values(const unsigned long long check_number)
+bool Hardcoded_Values(const unsigned long long check_number)
 {
 	if (check_number % 2 == 0) { return false; }
 	if (check_number % 3 == 0) { return false; }

@@ -1,2 +1,2 @@
 #pragma once
-auto remove_chars(std::string number) -> std::string;
+std::string Remove_Chars(std::string number);

@@ -1,2 +1,2 @@
 #pragma once
-auto hardcoded_values(unsigned long long check_number) -> bool;
+bool Hardcoded_Values(unsigned long long check_number);

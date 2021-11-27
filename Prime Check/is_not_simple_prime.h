@@ -1,2 +1,2 @@
 #pragma once
-auto is_not_simple_prime(int dumb) -> bool;
+bool Is_Not_Simple_Prime(int dumb);
